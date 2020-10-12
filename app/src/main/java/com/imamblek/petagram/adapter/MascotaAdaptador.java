@@ -7,14 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.imamblek.petagram.db.ConstructorMascotas;
-import com.imamblek.petagram.pogo.Mascota;
 import com.imamblek.petagram.R;
+import com.imamblek.petagram.pogo.Mascota;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -23,27 +22,33 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
 
     ArrayList<Mascota> mascotas;
     Activity activity;
-    public static  class MascotaViewHolder extends RecyclerView.ViewHolder {
-        // se llaman los metodos del la clase madre RecliclerView.
-        //declarar todos los views del cardView llamandoles con igual ids. ahora son objetos.
-        private ImageView imgFotoCV;
-        private TextView tvNombreCV;
-        private TextView tvQtyHuesosCV;
-        private ImageButton bntDarHueso;
+    @Override
+    public void onBindViewHolder( final MascotaViewHolder mascotaViewHolder, int position) {
+        final Mascota mascota = mascotas.get(position);//obtiene el objeto iterando todas sus partes
+        //mascotaViewHolder.imgFotoCV.setImageResource(mascota.getUrlfoto());
+        Picasso.with(activity)
+                .load(mascota.getUrlfoto())
+                .placeholder(R.drawable.icons8_crash_bandicoot_48)
+                .into(mascotaViewHolder.imgFotoCV);
+        mascotaViewHolder.tvNombreCV.setText(mascota.getFullnombre());
+        mascotaViewHolder.tvQtyHuesosCV.setText(String.valueOf(mascota.getHuesos()));
+        /*
+        mascotaViewHolder.bntDarHueso.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity ,"Diste like a "+ mascota.getFullnombre(),Toast.LENGTH_SHORT).show();
+
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.darHuesoMascota(mascota);
+                mascotaViewHolder.tvQtyHuesosCV.setText(String.valueOf(constructorMascotas.obtenerHuesosMascota(mascota)));
 
 
+            }
+        });
 
-        public MascotaViewHolder(@NonNull View itemView) {
-            super(itemView);
-            // asocio cada objeto declarado cn su respectivo view en el XLM usando casting y sus Ids.
-            //al usar los mismo nombres que los identificadores se hca mas facil asociarlos.
-            imgFotoCV    = (ImageView) itemView.findViewById(R.id.imgFotoCVgrid);
-            tvNombreCV   = (TextView) itemView.findViewById(R.id.tvNombreCV);
-            tvQtyHuesosCV = (TextView) itemView.findViewById(R.id.tvQtyHuesosCV);
-            bntDarHueso = (ImageButton) itemView.findViewById(R.id.btnDarHueso);
+         */
 
-
-        }
     }
 
 
@@ -54,33 +59,32 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
     }
 
     @Override
-    public MascotaViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    public MascotaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //le dara vida (inflar) a nuestro Layout CardView al asociarlo cn el view en el Layout.
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_petagram,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_petagram, parent, false);
         return new MascotaViewHolder(v);
     }
 
-    @Override
-    public void onBindViewHolder( final MascotaViewHolder mascotaViewHolder, int position) {
-        final Mascota mascota = mascotas.get(position);//obtiene el objeto iterando todas sus partes
-        mascotaViewHolder.imgFotoCV.setImageResource(mascota.getFoto());
-        mascotaViewHolder.tvNombreCV.setText(mascota.getNombre());
-        mascotaViewHolder.tvQtyHuesosCV.setText(String.valueOf(mascota.getHuesos()));
-
-        mascotaViewHolder.bntDarHueso.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(activity ,"Diste like a "+ mascota.getNombre(),Toast.LENGTH_SHORT).show();
-
-                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
-                constructorMascotas.darHuesoMascota(mascota);
-                mascotaViewHolder.tvQtyHuesosCV.setText(String.valueOf(constructorMascotas.obtenerHuesosMascota(mascota)));
+    public static class MascotaViewHolder extends RecyclerView.ViewHolder {
+        // se llaman los metodos del la clase madre RecliclerView.
+        //declarar todos los views del cardView llamandoles con igual ids. ahora son objetos.
+        private ImageView imgFotoCV;
+        private TextView tvNombreCV;
+        private TextView tvQtyHuesosCV;
+        private ImageButton bntDarHueso;
 
 
-            }
-        });
+        public MascotaViewHolder(@NonNull View itemView) {
+            super(itemView);
+            // asocio cada objeto declarado cn su respectivo view en el XLM usando casting y sus Ids.
+            //al usar los mismo nombres que los identificadores se hca mas facil asociarlos.
+            imgFotoCV = itemView.findViewById(R.id.imgFotoCVgrid);
+            tvNombreCV = itemView.findViewById(R.id.tvNombreCV);
+            tvQtyHuesosCV = itemView.findViewById(R.id.tvQtyHuesosCV);
+            bntDarHueso = itemView.findViewById(R.id.btnDarHueso);
 
+
+        }
     }
 
     @Override

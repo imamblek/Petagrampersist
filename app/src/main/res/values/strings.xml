@@ -11,6 +11,8 @@
     <string name="texto_about_info">App de practica para el curso de Desarrollo de aplicaciones con Android desarrollada por Isaac Mora, Costa Rica, Sep 2020</string>
     <string name="texto_contacto_asunto">Asunto:</string>
     <string name="todo">TODO</string>
+    <string name="facebook_app_id">901503354004566</string>
+    <string name="fb_login_protocol_scheme">fb901503354004566</string>
 
 
 </resources>

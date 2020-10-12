@@ -1,17 +1,8 @@
 package com.imamblek.petagram.db;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
-
-import com.imamblek.petagram.pogo.Mascota;
-
-import java.util.ArrayList;
 
 public class BaseDatos extends SQLiteOpenHelper {
 
@@ -45,19 +36,19 @@ private Context context;
         db.execSQL("DROP TABLE IF EXISTS " + ConstantesBaseDatos.TABLA_HUESOS_MASCOTA);
         onCreate(db);
     }
-
+/*
     public ArrayList<Mascota> obtenerTodasLasMascotas(){
         ArrayList<Mascota> mascotas = new ArrayList<>();
 
-        String query = "SELECT * FROM " + ConstantesBaseDatos.TABLA_MASCOTAS;
+        String query = "SELECT * FROM " + ConstantesBaseDatos.TABLA_MASCOTAS +" where "+ ConstantesBaseDatos.TABLA_HUESOS_MASCOTA_ID +"< 5" ;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor registros = db.rawQuery(query, null);
 
         while (registros.moveToNext()){
             Mascota mascotaActual = new Mascota();
-            mascotaActual.setId(registros.getInt(0));
-            mascotaActual.setNombre(registros.getString(1));
-            mascotaActual.setFoto(registros.getInt(2));
+            //mascotaActual.setId(registros.getInt(0));
+           // mascotaActual.setUsername(registros.getString(1));
+           // mascotaActual.setUrlfoto(registros.getInt(2));
 
             String queryHuesos = "SELECT COUNT("+ConstantesBaseDatos.TABLA_HUESOS_MASCOTA_QTY_HUESOS+") as huesos " +
                     " FROM " + ConstantesBaseDatos.TABLA_HUESOS_MASCOTA +
@@ -106,4 +97,6 @@ private Context context;
 
         return huesos;
     }
+
+ */
 }
