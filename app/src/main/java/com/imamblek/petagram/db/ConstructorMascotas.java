@@ -1,15 +1,7 @@
 package com.imamblek.petagram.db;
 
-import android.content.ContentValues;
-import android.content.Context;
-
-import com.imamblek.petagram.R;
-import com.imamblek.petagram.pogo.Mascota;
-
-import java.util.ArrayList;
-
 public class ConstructorMascotas {
-
+/*
     private Context context;
     private static final int Hueso = 1;
 
@@ -21,6 +13,8 @@ public class ConstructorMascotas {
 
        BaseDatos db = new BaseDatos(context);
        insertarMisMascotas(db);
+
+
        return db.obtenerTodasLasMascotas();
     }
 
@@ -54,6 +48,7 @@ public class ConstructorMascotas {
         contentValues.put(ConstantesBaseDatos.TABLA_MASCOTAS_FOTO, R.drawable.calamar);
 
         db.insertarMascota(contentValues);
+
     }
 
     public void darHuesoMascota(Mascota mascota) {
@@ -70,4 +65,6 @@ public class ConstructorMascotas {
         return db.obtenerHuesosMascota(mascota);
     }
 
+
+ */
 }

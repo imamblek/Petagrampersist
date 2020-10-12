@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class DetalleMascota extends AppCompatActivity {
 
-    ArrayList <Mascota> mascotas;
+    ArrayList<Mascota> mascotas;
     public RecyclerView rvMascotas;
 
     @Override
@@ -32,13 +32,15 @@ public class DetalleMascota extends AppCompatActivity {
         // para activar el boton de regreso.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        rvMascotas = (RecyclerView) findViewById(R.id.rvMascotasFragment);
+        rvMascotas = findViewById(R.id.rvMascotasFragment);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(RecyclerView.VERTICAL);
 
         rvMascotas.setLayoutManager(llm);
-        inicializarListaContactos();
+
+        //inicializarListaContactos();
+
         inicializarAdaptador();
 
     }
@@ -56,18 +58,20 @@ public class DetalleMascota extends AppCompatActivity {
     }
 
 
-    public void inicializarListaContactos () {
+    /*public void inicializarListaContactos () {
         mascotas = new ArrayList<Mascota>();
         mascotas.add(new Mascota(R.drawable.cangrejo, "Cangrejo", 0));
         mascotas.add(new Mascota(R.drawable.delfin, "Delfin", 0));
         mascotas.add(new Mascota(R.drawable.pulpo, "Pulpo", 0));
         mascotas.add(new Mascota(R.drawable.estrella, "Estrella", 0));
         mascotas.add(new Mascota(R.drawable.calamar, "Calamar", 0));
-    }
+
+    }*/
+
     //para llamar al menu de opciones
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_opciones,menu);
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
         return true;
     }
 

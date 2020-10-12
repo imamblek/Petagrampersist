@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -14,11 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-
+import com.google.android.material.tabs.TabLayout;
 import com.imamblek.petagram.adapter.PageAdapter;
 import com.imamblek.petagram.vistafragment.PerfilFragment;
 import com.imamblek.petagram.vistafragment.RecyclerViewFragment;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
@@ -31,26 +28,26 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         androidx.appcompat.widget.Toolbar miActionBarbtn = findViewById(R.id.miActionBarbtn);
         setSupportActionBar(miActionBarbtn);
 
 
-        toolbar = (Toolbar)  findViewById(R.id.toolbar);
-        tabLayout = (TabLayout)  findViewById(R.id.tabLayout);
-        viewPager = (ViewPager)  findViewById(R.id.viewPager);
+        toolbar = findViewById(R.id.toolbar);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
         setUpViewPager();
 
-        btnEstrella = (ImageButton)  findViewById(R.id.btnEstrella);
+        //btnEstrella = (ImageButton)  findViewById(R.id.btnEstrella);
 
 
-        if ((toolbar != null)){
+        if ((toolbar != null)) {
             setSupportActionBar(toolbar);
         }
 
-
+        /*
         btnEstrella.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
     }
 
     private ArrayList<Fragment> agregarFragments(){
